@@ -230,15 +230,35 @@
             align-items: center;
         }
 
-        /* 🎯 YOUR LOGO IMAGE STYLING */
+        /* 🎯 LOGO IMAGE STYLING - FIXED */
         .logo-image {
-            height: 65px;
+            height: 70px;
             width: auto;
             max-width: 250px;
             object-fit: contain;
             opacity: 0;
             animation: logoImageEntrance 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
             filter: drop-shadow(0 4px 10px rgba(168, 136, 122, 0.15));
+            display: block;
+        }
+
+        /* Fallback text logo - hidden by default */
+        .logo-text {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--soft-black);
+            letter-spacing: 3px;
+            display: none;
+        }
+
+        .logo-text span {
+            font-weight: 300;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gold-accent);
+            margin-left: 10px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
         }
 
         @keyframes logoImageEntrance {
@@ -431,16 +451,6 @@
             transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
-        
-        .btn-outline:hover {
-            color: var(--cream);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .btn-outline:hover:before {
-            width: 100%;
-        }
 
         /* Hero Section */
         .hero {
@@ -517,7 +527,7 @@
             line-height: 1.8;
         }
 
-        /* Circular Logo - Enhanced */
+        /* Circular Logo */
         .hero-logo-circle {
             flex-shrink: 0;
             opacity: 0;
@@ -1192,13 +1202,13 @@
     <div class="bg-blur-2"></div>
 
     <div class="container">
-        <!-- Luxury Navigation with YOUR LOGO IMAGE -->
+        <!-- Navigation with YOUR LOGO -->
         <nav class="navbar">
             <div class="logo-wrapper">
-                <!-- 🎯 AAPKA LOGO IMAGE - YAHAN LAGA HAI -->
-                <img src="Logo Image 1 .png" alt="M.Com Designer Wali" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <!-- Fallback text logo agar image load na ho -->
-                <div class="logo" style="display: none;">M.COM <span>DESIGNER WALI</span></div>
+                <!-- 🎯 IMAGE LOGO - Try different paths -->
+                <img src="Logo Image 1 .png" alt="M.Com Designer Wali" class="logo-image" id="brandLogo">
+                <!-- Fallback text logo -->
+                <div class="logo-text" id="fallbackLogo">M.COM <span>DESIGNER WALI</span></div>
                 <div class="logo-shine"></div>
             </div>
             <div class="nav-links">
@@ -1429,12 +1439,33 @@
         <div class="footer-floral">✿ ❀ ✿ ❀ ✿</div>
     </footer>
 
-    <!-- Scroll Animation JavaScript -->
+    <!-- JavaScript with Logo Fallback -->
     <script>
         (function(){
             "use strict";
             
-            // Intersection Observer for Scroll Animations with Reverse Support
+            // 🎯 LOGO FALLBACK - Agar image load nahi hoti toh text show karein
+            const brandLogo = document.getElementById('brandLogo');
+            const fallbackLogo = document.getElementById('fallbackLogo');
+            
+            if (brandLogo) {
+                brandLogo.onerror = function() {
+                    this.style.display = 'none';
+                    if (fallbackLogo) {
+                        fallbackLogo.style.display = 'block';
+                        fallbackLogo.style.animation = 'logoImageEntrance 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards';
+                    }
+                    console.log('Logo image not found. Please check file path: "Logo Image 1 .png"');
+                };
+                
+                // Also check if image loaded successfully
+                brandLogo.onload = function() {
+                    console.log('✅ Logo image loaded successfully!');
+                    fallbackLogo.style.display = 'none';
+                };
+            }
+            
+            // Intersection Observer for Scroll Animations
             const observerOptions = {
                 threshold: 0.12,
                 rootMargin: '0px 0px -40px 0px'
@@ -1556,7 +1587,7 @@
                 });
             }, 150);
 
-            console.log('✨ M.Com Designer Wali — Your Logo Added Successfully! ✨');
+            console.log('✨ M.Com Designer Wali — Logo debugging active! Check console for status.');
         })();
     </script>
 </body>
