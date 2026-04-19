@@ -53,7 +53,7 @@
             --border-radius-lux: 32px;
         }
 
-        h1, h2, h3, h4, .logo {
+        h1, h2, h3, h4 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 500;
             letter-spacing: -0.02em;
@@ -71,7 +71,7 @@
         /* Floral Decorative Elements */
         .floral-corner {
             position: absolute;
-            opacity: 0.15;
+            opacity: 0.12;
             pointer-events: none;
             z-index: 0;
         }
@@ -181,7 +181,7 @@
             right: -200px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(240, 221, 214, 0.12) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(240, 221, 214, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 1;
@@ -194,7 +194,7 @@
             left: -200px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(184, 149, 138, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(184, 149, 138, 0.06) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 1;
@@ -213,12 +213,12 @@
             66% { transform: translate(30px, -50px) scale(0.95); }
         }
 
-        /* Navigation */
+        /* Navigation with Image Logo */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 0;
+            padding: 25px 0;
             border-bottom: 1px solid rgba(168, 136, 122, 0.12);
             position: relative;
             z-index: 100;
@@ -226,52 +226,53 @@
 
         .logo-wrapper {
             position: relative;
+            display: flex;
+            align-items: center;
         }
 
-        .logo {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--soft-black);
-            letter-spacing: 3px;
+        /* 🎯 YOUR LOGO IMAGE STYLING */
+        .logo-image {
+            height: 65px;
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
             opacity: 0;
-            animation: logoEntrance 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
-            position: relative;
-            display: inline-block;
+            animation: logoImageEntrance 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+            filter: drop-shadow(0 4px 10px rgba(168, 136, 122, 0.15));
         }
 
-        @keyframes logoEntrance {
+        @keyframes logoImageEntrance {
             0% {
                 opacity: 0;
-                transform: translateY(-40px) scale(0.85);
-                filter: blur(12px);
+                transform: translateY(-45px) scale(0.8);
+                filter: blur(10px) drop-shadow(0 4px 10px rgba(168, 136, 122, 0.15));
             }
             60% {
-                opacity: 0.9;
-                transform: translateY(8px) scale(1.03);
-                filter: blur(0px);
+                opacity: 0.95;
+                transform: translateY(5px) scale(1.02);
+                filter: blur(0px) drop-shadow(0 4px 10px rgba(168, 136, 122, 0.15));
             }
             100% {
                 opacity: 1;
                 transform: translateY(0) scale(1);
-                filter: blur(0px);
+                filter: blur(0px) drop-shadow(0 4px 10px rgba(168, 136, 122, 0.15));
             }
         }
 
-        .logo span {
-            font-weight: 300;
-            font-size: 0.85rem;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--gold-accent);
-            margin-left: 10px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            opacity: 0;
-            animation: subtitleFade 0.9s ease-out 1s forwards;
+        .logo-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: shineEffect 2.5s ease-in-out 0.8s;
+            pointer-events: none;
         }
 
-        @keyframes subtitleFade {
-            0% { opacity: 0; transform: translateX(-15px); }
-            100% { opacity: 1; transform: translateX(0); }
+        @keyframes shineEffect {
+            0% { left: -100%; }
+            100% { left: 200%; }
         }
 
         .nav-links {
@@ -324,7 +325,7 @@
             color: var(--gold-accent);
         }
 
-        /* Scroll Animation Classes with Reverse Support */
+        /* Scroll Animation Classes */
         .fade-up {
             opacity: 0;
             transform: translateY(50px);
@@ -516,7 +517,7 @@
             line-height: 1.8;
         }
 
-        /* Circular Logo - Enhanced with Floral Elements */
+        /* Circular Logo - Enhanced */
         .hero-logo-circle {
             flex-shrink: 0;
             opacity: 0;
@@ -1136,24 +1137,26 @@
         }
         
         @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 25px; }
-            .nav-links { gap: 2rem; flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 3.8rem; }
+            .navbar { flex-direction: column; gap: 20px; }
+            .nav-links { gap: 1.8rem; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 3.5rem; }
             .circle-logo { width: 300px; height: 300px; }
             .circle-initials { font-size: 4.5rem; }
             .contact-grid { grid-template-columns: 1fr; }
-            h2 { font-size: 3rem; }
+            h2 { font-size: 2.8rem; }
             .container { padding: 0 25px; }
+            .logo-image { height: 50px; }
         }
         
         @media (max-width: 550px) {
-            .hero h1 { font-size: 2.8rem; }
+            .hero h1 { font-size: 2.5rem; }
             .circle-logo { width: 260px; height: 260px; }
             .circle-initials { font-size: 3.5rem; }
             .services-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: 1fr; }
             .btn { padding: 14px 35px; }
             .section-subtitle { font-size: 1.5rem; }
+            .logo-image { height: 45px; }
         }
 
         section {
@@ -1166,7 +1169,6 @@
             padding-top: 30px;
         }
 
-        /* Staggered delays */
         .service-card:nth-child(1) { transition-delay: 0.05s; }
         .service-card:nth-child(2) { transition-delay: 0.15s; }
         .service-card:nth-child(3) { transition-delay: 0.25s; }
@@ -1190,10 +1192,14 @@
     <div class="bg-blur-2"></div>
 
     <div class="container">
-        <!-- Luxury Navigation -->
+        <!-- Luxury Navigation with YOUR LOGO IMAGE -->
         <nav class="navbar">
             <div class="logo-wrapper">
-                <img src="https://raw.githubusercontent.com/KIS566/M.Com_Designer_Wali/main/M.Com_Designer_Wali/Logo%20Image%201%20.png" alt="M.Com Designer Wali Logo" class="logo" style="height: 60px; width: auto;">
+                <!-- 🎯 AAPKA LOGO IMAGE - YAHAN LAGA HAI -->
+                <img src="Logo" alt="M.Com Designer Wali" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback text logo agar image load na ho -->
+                <div class="logo" style="display: none;">M.COM <span>DESIGNER WALI</span></div>
+                <div class="logo-shine"></div>
             </div>
             <div class="nav-links">
                 <a href="#home">Home</a>
@@ -1423,7 +1429,7 @@
         <div class="footer-floral">✿ ❀ ✿ ❀ ✿</div>
     </footer>
 
-    <!-- Scroll Animation JavaScript with Reverse Support -->
+    <!-- Scroll Animation JavaScript -->
     <script>
         (function(){
             "use strict";
@@ -1436,15 +1442,12 @@
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // Add visible class when intersecting, remove when not (reverse animation)
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     } else {
-                        // Reverse animation - remove visible class when element leaves viewport
                         entry.target.classList.remove('visible');
                     }
                     
-                    // Handle grid items
                     if (entry.isIntersecting) {
                         if (entry.target.classList.contains('services-grid')) {
                             const cards = entry.target.querySelectorAll('.service-card');
@@ -1464,7 +1467,6 @@
                             });
                         }
                     } else {
-                        // Reverse for grid items
                         if (entry.target.classList.contains('services-grid')) {
                             const cards = entry.target.querySelectorAll('.service-card');
                             cards.forEach(card => card.classList.remove('visible'));
@@ -1478,7 +1480,6 @@
                 });
             }, observerOptions);
 
-            // Observe all animated elements
             document.querySelectorAll('.fade-up, .fade-down, .fade-left, .fade-right, .scale-in, .section-header, .services-grid, .gallery-grid').forEach(el => {
                 observer.observe(el);
             });
@@ -1546,7 +1547,6 @@
                 }
             });
 
-            // Check visible on load
             setTimeout(() => {
                 document.querySelectorAll('.fade-up, .fade-down, .fade-left, .fade-right, .scale-in, .section-header, .service-card, .gallery-item').forEach(el => {
                     const rect = el.getBoundingClientRect();
@@ -1556,7 +1556,7 @@
                 });
             }, 150);
 
-            console.log('✨ M.Com Designer Wali — Boutique elegance with floral charm ✨');
+            console.log('✨ M.Com Designer Wali — Your Logo Added Successfully! ✨');
         })();
     </script>
 </body>
