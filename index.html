@@ -1073,6 +1073,106 @@
             margin: 0;
             max-width: 100%;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Contact Grid Responsive */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* Map Card Hover Effect */
+.map-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.map-card iframe {
+    transition: all 0.3s ease;
+}
+
+/* Large contact artwork placed in left column */
+.contact-art {
+    width: 100%;
+    height: 500px;
+    border-radius: 28px;
+    object-fit: cover;
+    display: block;
+    margin-top: 22px;
+    box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 1024px) {
+    .contact-art { height: 360px; }
+}
+
+@media (max-width: 768px) {
+    .contact-art { display: none; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .input-row {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+    
+    .map-card iframe {
+        height: 200px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -1525,7 +1625,20 @@
     </div>
 </div>
 <div class="video-caption fade-up" style="transition-delay:0.2s">— Precision in every fold, passion in every stitch —</div>
-<!-- ============ CONTACT with Formspree ============ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ============ CONTACT with Formspree & Google Map ============ -->
 <section id="contact">
     <div class="container">
         <div class="section-header">
@@ -1538,10 +1651,14 @@
                 <span class="divider-line"></span>
             </div>
         </div>
-        <div class="contact-grid">
+        
+        <!-- Contact Grid with 2 Columns -->
+        <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            
+            <!-- LEFT SIDE: Contact Form -->
             <div class="form-card fade-left">
                 <form id="contactForm" action="https://formspree.io/f/xvzvddrl" method="POST">
-                    <div class="input-row">
+                    <div class="input-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="input-group">
                             <label>Your Name</label>
                             <input type="text" name="name" placeholder="Priya Sharma" required>
@@ -1574,45 +1691,84 @@
                         <span>Send Enquiry →</span>
                     </button>
                     <div id="formStatus" style="margin-top:20px; text-align:center; font-size:0.85rem;"></div>
-                </form>
+                </form><br><br><br><br><br><br><br><br>
+                <!-- Large artwork for left column (hidden on small screens) -->
+                <img src="https://raw.githubusercontent.com/KIS566/M.Com_Designer_Wali/main/Screenshot%202026-06-14%20041707.png" alt="M.Com artwork" class="contact-art" loading="lazy">
             </div>
+
+
+
+
+
+
+
+
+            
+            <!-- RIGHT SIDE: WhatsApp + Info + GOOGLE MAP -->
             <div class="connect-sidebar fade-right">
-                <div class="wa-card">
-                    <div class="wa-icon">💬</div>
-                    <h3>Direct Concierge</h3>
-                    <p>Prefer instant communication? Connect with our head designer on WhatsApp for immediate assistance.</p>
-                    <a href="https://wa.me/919876543210?text=Hello%20M.Com%20Designer%20Wali%2C%20I'd%20like%20to%20book%20a%20consultation." target="_blank" class="wa-btn">
+                
+                <!-- WhatsApp Card -->
+                <div class="wa-card" style="background: #f0faf3; border-radius: 36px; padding: 35px; text-align: center; margin-bottom: 25px;">
+                    <div class="wa-icon" style="font-size: 3rem;">💬</div>
+                    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;">Direct Concierge</h3>
+                    <p style="color: #4a6857;">Prefer instant communication? Connect with our head designer on WhatsApp for immediate assistance.</p>
+                    <a href="https://wa.me/919876543210?text=Hello%20M.Com%20Designer%20Wali%2C%20I'd%20like%20to%20book%20a%20consultation." target="_blank" class="wa-btn" style="display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; padding: 14px 32px; border-radius: 60px; text-decoration: none; margin-top: 15px;">
                         <span>💬</span> WhatsApp Now
                     </a>
                 </div>
-                <div class="info-card">
-                    <h4>Atelier Details</h4>
-                    <div class="info-item">
-                        <div class="info-icon">📍</div>
+                
+                <!-- Atelier Details Card -->
+                <div class="info-card" style="background: var(--ink); border-radius: 36px; padding: 35px; color: var(--cream); margin-bottom: 25px;">
+                    <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--gold-light); margin-bottom: 20px;">Atelier Details</h4>
+                    <div class="info-item" style="display: flex; gap: 15px; margin-bottom: 20px;">
+                        <div class="info-icon" style="font-size: 1.3rem;">📍</div>
                         <div>
-                            <div class="info-label">Location</div>
+                            <div class="info-label" style="font-size: 0.7rem; letter-spacing: 2px; color: var(--dusty);">Location</div>
                             <div class="info-value">12, Hauz Khas Village<br>New Delhi, 110016</div>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">📞</div>
+                    <div class="info-item" style="display: flex; gap: 15px; margin-bottom: 20px;">
+                        <div class="info-icon" style="font-size: 1.3rem;">📞</div>
                         <div>
-                            <div class="info-label">Concierge</div>
+                            <div class="info-label" style="font-size: 0.7rem; letter-spacing: 2px; color: var(--dusty);">Concierge</div>
                             <div class="info-value">+91 98765 43210</div>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">✉️</div>
+                    <div class="info-item" style="display: flex; gap: 15px; margin-bottom: 20px;">
+                        <div class="info-icon" style="font-size: 1.3rem;">✉️</div>
                         <div>
-                            <div class="info-label">Email</div>
+                            <div class="info-label" style="font-size: 0.7rem; letter-spacing: 2px; color: var(--dusty);">Email</div>
                             <div class="info-value">concierge@mcomdesignerwali.com</div>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">🕐</div>
+                    <div class="info-item" style="display: flex; gap: 15px;">
+                        <div class="info-icon" style="font-size: 1.3rem;">🕐</div>
                         <div>
-                            <div class="info-label">Atelier Hours</div>
+                            <div class="info-label" style="font-size: 0.7rem; letter-spacing: 2px; color: var(--dusty);">Atelier Hours</div>
                             <div class="info-value">Mon–Sat: 10 AM – 7 PM<br>Sunday by appointment</div>
+                        </div>
+                    </div>
+                </div>
+                 
+                    <div style="flex: 1;">
+                        <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            <span>🗺️</span> Find Us Here
+                        </h4>
+                <!-- 🗺️ GOOGLE MAP CARD (NEW) -->
+                <div class="map-card" style="background: var(--parchment); border-radius: 36px; padding: 20px; border: 1px solid rgba(201,169,160,0.2); display: flex; gap: 20px; align-items: flex-start;">
+                                        
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.5428594563927!2d77.19489747512227!3d28.55429238805094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce26e6e4e6e6e%3A0x6e6e6e6e6e6e6e6e!2sHauz%20Khas%20Village%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 24px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                        <div style="margin-top: 15px; text-align: center;">
+                            <a href="https://maps.google.com/?q=Hauz+Khas+Village+New+Delhi" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--mauve); text-decoration: none;">
+                                <span>📍</span> Get Directions on Google Maps →
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1620,6 +1776,19 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- ============ INSTAGRAM STRIP ============ -->
 <div class="insta-strip">
